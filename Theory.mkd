@@ -1,0 +1,884 @@
+* C++ THEORY
+
+** RUNNING C++ FILE
+to run c++ file run this command in terminal
+`g++ file_name.cpp`
+it will create a application file with random name in the same directory, now run that application file in the terminal
+if you want to name the application file something you want run this command
+`g++ file_name.cpp -o file_name`
+
+** INPUT-OUTPUT
+iostram stand for input-output stream is the library that deals with basic input output in c++. To use functionality defined within the library, we need to include the iostream header at the begining of our program 
+`#include <iostream>`
+OUTPUT:-
+std::cout, which stands for character output, is used together with the insertion operator << to print values to the terminal
+`std::cout << 'hello wolf';`
+multiple insertion operators can be used together on the same line
+`std::cout << 'code is << 10 << 'fun';`
+INPUT:-
+std::cin, which stands for character input can be used with the extraction operator >> to read input from the user. The input value needs to be stored in a varible so we can use it.
+```
+int x;
+std::cin >> x;
+```
+example:
+```
+int age;
+std::cout << 'enter your age';
+std::cin >> age;
+std::cout << 'your age is' << age << 'years old';
+```
+
+** DATA TYPES
+There are 5 data types in C++
+1. int : stores number without decimals
+`int moon = 1;`
+
+2. double : double stores floating point numbers with decimals
+`double pi = 3.14;`
+
+3. char : it stores single character surronded by single quotes ''
+`char first_letter = 'a';`
+
+4. string : std::string stores a sequence of characters surronded by double quotes ""
+`std:string message  = "hello wolf";`
+
+5. bool : it stroes true or false boolean values.
+
+** REFERENCE
+a reference variable is an alias to an existing variable. It is declared by using an ampersand & between the reference type and the variable name
+```
+int examGrade = 85;
+int& score = examGrade;
+```
+The score variable is an alias to the examGrade variable. When the value of score is changed, the value of examGrade will also change in the same way.
+Things to keep in mind:-
+1. references cannot be empty
+2. references cannot be reassigned, may lead to unexpected results
+
+** MEMORY ADDRESS
+when not used in declaration, the ampersand symbol & is called the address of operator and is used to access the memory address of a variable. This can be done by preceding the name of a variable with &
+```
+std::string message = "hello wolf";
+std::cout << message << std::endl; //return the value in the variable
+std::cout << &message << std::endl; //return the memory address of the variable
+```
+
+** POINTERS
+A pointer in c++ is a variable that stores a memory address as its value. Pointer variable are declared with an asterisk * between the datatype and the variable name. A pointer must point to a data type of the same type.
+Just like normal variable, pointers are empty when they are declared and need to be initialized. A pointer variable is usually assigned with a memory address obtained by the address of operator &
+```
+std::string day = "Monday";
+std::string* ptr = &day;
+```
+Pointers are similar to references in the sense that when the pointers value changes, the value of the original variable wil also change in the same way
+```
+*ptr = "Friday";
+std::cout << *ptr << std::endl; //print : Friday
+std::cout << day << std::endl; //print : Friday
+```
+
+** DEREFERENCE
+When not used in a declaration, the asterisk symbol * is called the dereference operator and is used to obtain the value pointed to by a pointer variable. This can be done by preceding the name of a pointer variable with *.
+
+** NULL POINTER
+It is dangerous to leave a pointer variable uninitialized. If you are unsure where to point, assign the variable to `nullptr`, which is a keyword that provides a typesafe pointer value representing an empty pointer.
+`int* ptr = nullptr;`
+
+** CONDITIONAL STATEMENTS
+IF-ELSE STATEMENTS:-
+```
+if(condition){
+    //code to execute
+}else if(condition){
+    //code to execute
+}else{
+    //code to execute
+}
+```
+
+SWITCH STATEMENTS:-
+the switch keyword initiates the switch statement. It is followed by an expression to be evaluated inside the parenthesis ().
+The case keyword is used to check whether the expression matches the specified value. If it does, then the code in that block would run
+```
+switch(expression) {
+    case 9:
+        std::cout << "freshman\n";
+        break;
+    case 10:
+        std::cout << "sophomore\n";
+        break;
+    case 11:
+        std::cout << "junior\n";
+        break;
+    default:
+        std::cout << "Invalid\n";
+        break;
+}
+```
+
+** LOOPS
+WHILE LOOP:-
+the while loop repeats a block of code as long as the given boolean condition is true
+```
+int count = 1;
+while (count <= 5) {
+    std::cout << count;
+    count++;
+}
+```
+
+D0-WHILE LOOP:-
+the do-while loop is very similar to a while loop, but will always execute atleast once, even if the condition is initially false.
+```
+int price = 300;
+do{
+    std::cout << "Too expensive";
+}while(price > 500);
+```
+
+FOR LOOP:-
+the for loop should be implemented when the programmer knows exactly how many times a block of code needs to be repeated.
+```
+for(int i=1; i<=5; i++){
+    std::cout << i;
+}
+```
+
+FOR-EACH LOOP:-
+for-each loop is especially useful for iterating through list-like structures such as arrays or std::vectors. Although regular for loops are perfectly capable of this task, for-each loops provide a more convenient syntax
+```
+int fibonacci[5] = {0,1,1,2,3};
+for(int number : fibonacci) {
+    std::cout << number;
+}
+```
+the for-each loop iterated through an array called fibonnaci using the counter variable number.
+
+when iterating through an array using the for-each loop, the counter variable may be declared using the `auto` keyword. `auto` lets c++ deduce the type of the variable based on the type of the list it belongs to
+```
+int fibonacci[5] = {0,1,1,2,3};
+for(auto number : fibonacci){
+    std::cout << number;
+}
+```
+
+** BREAK AND CONTINUE
+The `break` keyword can be used to jump out of a loop. When the break statement is executed, the loop immediately ends and any code below it will not run
+
+The `continue` keyword can be placed inside a loop to skip over one iteration of the loop. If continue is executed, the current loop iteration will immediately end, and the next iteration will begin.
+
+** FUNCTIONS
+A function is made up of two components declaration and definition
+```
+void doSomething() {
+    //code here
+}
+```
+if the function does not return anything void will stay as void but if the function returns a value, void will change to the data type of the return value
+```
+int pi() {
+    double a = 3.14;
+    return a;
+}
+```
+
+FUCNTION SCOPE
+scope defines the region of code that can access or view a given variable. Function scope is no different from other types of scope, variables declared inside a function are only accessible inside that function.
+
+** FUNCTION PARAMETERS AND ARGUMENTS
+PARAMETERS
+```
+int funExample (int a, double b, char c){
+    //code here
+}
+```
+
+DEFAULT PARAMETER
+```
+void message(std::string language = "c++") {
+    std::cout << "i like" << language;
+}
+```
+
+PASS BY REFERENCE
+pass by reference allows a function to modigy the value of its argument variables.
+Use the reference operator & to indicate that a parameter is passed by reference
+```
+void swap(int &i, int &j) {
+    int temp = i;
+    i =j;
+    j = temp;
+}
+
+int main() {
+    int first = 10;
+    int second = 20;
+
+    std:cout << "Before swap: " << first << " " << second << std::endl;
+
+    swap(first, second);
+
+    std:cout << "After swap: " << first << " " << second << std::endl;
+}
+```
+
+** FUNCTION OVERLOADING
+function overloading allows multiple functions to have the same name as long as they differ in their parameters. It enables functions to handle different types/numbers of inputs.
+```
+int add (int a, int b) {
+    return a+b;
+}
+
+double add (double a, double b){
+    return a+b;
+}
+```
+in order to differentiate overloaded functions, atleast one of the following properties must be true
+1. each function has different types of parameters
+2. each function has a different number of parameters
+
+OVERLOAD RESOLUTION
+when calling an overloaded function, the compiler will attempt to match the function call to the correct overload based on the type and the number of arguments passed in the function call. This is knows as overload resolution.
+
+** CLASSES
+A class is a user-defined data types that encapsulates information and serves as a blueprint for objects, which are instances of the class.
+To create a class, use the `class` keyword in the following syntax
+```
+class School {
+    //
+};
+```
+
+The components of a class are called class members. There are two types of class members:
+1. Attributes, also known as member variables, contain information about an object of the class.
+2. Methods, also known as member functions, are functions tha belong to the class.
+
+```
+class School {
+    public:
+        std::string name;
+        int age;
+
+        void banner() {
+            std::cout << name << " is " << age << " years old.\n";
+        }
+}
+```
+in above program name and age are attribute, and banner() is a method that has return type void.
+Public keyword is an access specifier that allows School to be directly accessed outside the class.
+
+DEFINING METHODS OUTSIDE OF A CLASS
+A method can be defined outside of a class by using inline or friend keywords.
+```
+void School::banner() {
+    std::cout << name << " is " << age << " years old.\n";
+}
+```
+
+** OBJECTS
+Creating an object is very similar to creating a variable, simply specify the class name followed by the object name.
+`School codecademy;`
+Once an object is created, we can access and modify the class attributes using the dot operator `.`:
+```
+codecademy.name = "Codecademy";
+codecademy.age = 10;
+```
+we can also use the dot operator `.` to call methods on that object:
+`codecademy.banner();`
+
+** ACCESS SPECIFIERS
+access specifiers are c++ keywords that determine the scope of class components. 
+
+PRIVATE KEYWORD:-
+by default, all class members are declared private, meaning they are not directly accessible from outside of the class. If something tries to use a private class member elsewhere in the program, the compiler will generate an error.
+```
+class Student {
+    std::string name;
+}
+
+int main() {
+    Student clara;
+    clara.name = "Clara"; //Not allowed, name is private
+    return 0;
+}
+```
+
+PUBLIC KEYWORD:-
+the public access specifier has the opposite effect of private, public class members are accessible from anywhere in the program
+```
+class Festival {
+    public:
+        int firework;
+}
+
+int main() {
+    Festival christmas;
+    christmas.firework = 100; //allowed because firework is public
+}
+```
+C++ provides a third access specifier : `protected`. It works much like private does, but allows inherited classes to access those class members.
+
+ENCAPSULATION:-
+It means to hide sensitive details about an object's implementation away from the user.
+In C++, encapsulation is achieved by declaring class member/attribute as private so they cannot be accessed from outside of the class.
+However, other parts of the program might need to read or modify the values of private class members. This is where accessor functions and mutator functions come in.
+
+ACCESSOR FUNCTION:-
+An accessor function also known as a getter function is a `public` function that returns the value of a `private` member variable
+```
+class Clock {
+    private:
+        int time = 1200;
+    
+    public:
+        int getTime() {
+            return time;
+        }
+};
+
+int main() {
+    Clock alarm;
+    std::cout << alarm.getTime(); //output: 1200
+}
+```
+
+MUTATOR FUNCTION:-
+a mutator function also known as the setter function is a `public` function that sets the value of a `private` member variable
+```
+class Clock {
+    private:
+        int time = 1200;
+    
+    public:
+        int getTime() {
+            return time;
+        }
+
+        //Mutator function for time
+        void setTime(int new_time) {
+            time = new_time;
+        }
+};
+
+int main() {
+    Clock alarm;
+    alarm.setTime(930);
+    std::cout << alarm.getTime(); //output: 930
+}
+```
+
+** CONSTRUCTORS
+A constructor is a special kind of method that is automatically called when an object of the class is created. A contructor has the same name as the class and no return type. Construtor are typically used to initialize class attribute and do any necessary setup work.
+
+DEFAULT CONSTRUCTOR:-
+A default constructor is a constructor that takes no parameters. If the object is created without specifying the initializtion values, the default constructor will be called.
+
+```
+class House {
+    private:
+        std::string location;
+        int rooms;
+
+    public:
+        //Default constructor
+        House() {
+            location = "New York";
+            rooms = 5;
+        }
+
+        void summary() {
+            std::cout << "Location: " << location << "\nRooms: " << rooms << std::endl;
+        }
+};
+
+int main() {
+    House red_house;
+    red_house.summary();
+    return 0;
+}
+```
+to define constructor outside the class, we can follow the same steps for defining a method outside the class
+```
+House::House() {
+    location = "New York";
+    rooms = 5;
+}
+```
+
+CONSTRUCTOR WITH PARAMETERS:-
+Similar to functions, constructor can be declared with parameters. Constructors with parameters allow object to be instantiated with specific values.
+```
+class House {
+    private:
+        std::string location;
+        int rooms;
+    
+    public:
+        //default constructor
+        House() {
+            location = "New York";
+            rooms = 5;
+        }
+
+        //constructor with parameters
+        House(std::string loc, int num) {
+            location = loc;
+            rooms = num;
+        }
+
+        void summary() {
+            std::cout << "Location: " << location << "\nRooms: " << rooms << std::endl;
+        }
+};
+
+int main(){
+    House red_house("London", 3);
+    red_house.summary();
+    return 0;
+}
+```
+
+CONSTRUCTOR WITH DEFAULT PARAMETERS
+the parameters of a constructor can have default values. Defaulting the constructor helps the number of constructors small.
+```
+class House {
+    private:
+        std::string location;
+    int rooms;
+
+    public:
+        // Constructor with default parameters
+        House(std::string loc = "New York", int num = 5) {
+            location = loc;
+            rooms = num;
+        }
+
+        void summary() {
+            std::cout << location << " house with " << rooms << " rooms.\n";
+        }
+};
+
+int main() {
+    House red_house;
+    House texas_house("Texas");
+    House big_florida_house("florida", 10);
+}
+```
+
+MEMBER INITIALIZER LISTS:-
+
+DESTRUCTOR:-
+A destructor is another method that is automatically called when an object is destroyed.
+Like a constructor, it has the same name as the class and no return type, but preceded by a `~` operator and takes no parameters.
+```
+class House {
+    private:
+        std::string location;
+        int rooms;
+
+    public:
+        // Constructor with default parameters
+        House(std::string loc = "New York", int num = 5) {
+            location = loc;
+            rooms = num;
+        }
+
+        void summary() {
+            std::cout << location << " house with " << rooms << " rooms.\n";
+        }
+
+        // Destructor
+        ~House() {
+            std::cout << "Moved away from " << location;
+        }
+};
+```
+
+** INHERITANCE
+inheritance is the concept of defining a class in terms of another class.
+
+BASIC INHERITANCE:-
+classes that belong to an inheritance relationship are seprated into two groups
+1. base class or parent class : The class being inherited from
+2. derived class or child class : The class that inherits from the base class
+
+A derived class inherits attributes and methods from its base class. To declare a derived class, place `:` after the class name and then write the access specifier and the name of the base class.
+```
+class Animal {
+    public:
+        std::string gender;
+        int age;
+};
+
+class Dog: public Animal {
+    public:
+        std::string breed;
+
+        void sound(){
+            std::cout << "woof\n";
+        }
+};
+
+int main() {
+    Dog buddy;
+    buddy.gender = "male";
+    buddy.age = 8;
+    buddy.breed = "husky";
+
+    buddy.sound();
+
+    return 0;
+}
+```
+
+CONSTRUCTOR INHERITANCE:-
+A derived class also inherits the constructor of its base class. A derived class can initialize the private attributes of its base class by using the base class constructor in a member initializer list:
+```
+// Base class
+class Animal {
+    private:
+        std::string gender;
+        int age;
+
+    public:
+        Animal(std::string new_gender, int new_age) : gender(new_gender), age(new_age) {}
+};
+
+// Derived class
+class Dog: public Animal  {
+    private:
+        std::string breed;
+
+    public:
+        // Call base class constructor
+        Dog(std::string new_gender, int new_age, std::string new_breed)
+        : Animal(new_gender, new_age), breed(new_breed) {}
+
+        void sound() {
+            std::cout << "Woof\n";
+        }
+};
+
+int main() {
+    // Calls Dog(string, int, string) constructor
+    Dog buddy("male", 8, "Husky");
+  
+    // Output: Woof
+    buddy.sound();
+
+    return 0;
+}
+```
+
+MULTILEVEL INHERITANCE:-
+A class can inherit from another class that is already derived from another class. This concept is sometimes referred to as an inheritance chain
+```
+class A {   // A is the base class
+    public:
+        int a;
+
+        A() { std::cout << "Constructing A\n"; }
+};
+
+class B: public A { // class B inherits from class A
+    public:
+        int b;
+
+        B() { std::cout << "Constructing B\n"; }
+};
+
+class C: public B { // class C inherits from class B
+    public:
+        int c;
+
+        C() { std::cout << "Constructing C\n"; }
+};
+
+int main() {
+    C example; 
+
+    return 0;
+}
+
+```
+
+** POLYMORPHISM
+Polymorphism allows a derived class to override methods inherited from its base class. Although they have the same function signature, the C++ compiler will resolve function execution depending on the type of object that invokes the function.
+```
+class Animal {
+    public:
+        void action() {
+            std::cout << "The animal does something.\n";
+        }
+};
+
+class Fish: public Animal {
+    public:
+        void action() {
+            std::cout << "Fish swim.\n";
+        }
+};
+
+class Bird: public Animal {
+    public:
+        void action() {
+            std::cout << "Birds fly.\n";
+        }
+};
+
+int main() {
+    Animal newAnimal;
+    Fish newFish;
+    Bird newBird;
+
+    newAnimal.action();
+    newFish.action();
+    newBird.action();
+
+    return 0;
+}
+```
+
+** ARRAYS
+An array is a fixed-sized collection of items of the same type. Unlike normal variables that store individual values, arrays can store multiple values in a single indentifier
+
+CREATING AN ARRAY:-
+to declare an array, state the data type of the array and specify the array name followed by the size of the array inside square brackets [].
+`char grade[5];`
+when an array is initialized at declaration, the size of the array in the square brackets [] may be omitted. In this case, the array will be just big enough to contain the initial values.
+`char grade[] = {'a', 'b', 'c', 'd'};`
+
+ACCESSING ARRAY ELEMENTS:-
+An element of an array can be accessed by stating the array name followed by the index of the array element contained within square brackets [].
+```
+char grade[] = {'a', 'b', 'c'};
+std::cout << grade[0];
+```
+
+MULTIDIMENSIONAL ARRAYS:-
+Since arrays are just collections of things, its possible to create "arrays of arrays" or multidimensional array can be declared by adding one extra set of square brackets [].
+`int table[3][5];`
+two dimentional arrays can be thought of as tables made up of rows and columns. The number inside the first[] is the number of rows, the number inside the second[] is the number of columns.
+```
+int table[3][5] = {
+    {0,1,2,3,4},
+    {5,6,7,8,9},
+    {10,11,12,13,14}
+};
+```
+
+** VECTORS
+Similar to an array, a vector is used to store a sequence of elements accessible by index. But unlike arrays, vectors can dynamically shrink and grow in size. Elements can be added or removed from a vector after it has been declared.
+
+CREATING A VECTOR:-
+C++'s built in `std::vector` lives in the `<vector>` standard library. This preprocessor directive needs to be added to the top of the program
+`#include <vector>`
+a vector of char's called alphabet can be declared by
+`std::vector<char> alphabet;`
+vectors can be initialized to a list of values in the same way as arrays. The initial values are comma-seprated and placed in between braces {}.
+`std::vector<char> alphabet = {'a', 'b', 'c'};`
+
+VECTOR METHODS:-
+Adding an Element:-
+To add a new element to the 'back', or end of the vector, use the `.push_back()` function.
+```
+std::vector<int> weights;
+weights.push_back(25);
+weights.push_back(45);
+```
+
+Removing an Element:-
+To remove an element from the end of the vector, use the `.pop_back()` function
+```
+std::vector<int> weights;
+weights.push_back(25);
+weights.push_back(45);
+
+weights.pop_back(25);
+```
+
+Accessing Vector Elements:-
+The elements of a vector can be accessed or modified in the same way as arrays.
+```
+std::vector<char> alphabet = {'a', 'b', 'c'};
+std::cout << alphabet[2];
+```
+besides using the [] notation, C++ offers other methods, to access the first element of a vector, use `.front()`.
+`std::cout << alphabet.front();`
+to access the last element of a vector, use `.back()`.
+`std::cout << alphabet.back();`
+To find the size of the vector use the `.size()`.
+`std::cout << colors.size();`
+to check if the vector is empty or not use `.empty()` it will return a boolean value based on whether it is empty or not
+`std::cout << colors.empty();`
+
+** STACKS
+Stacks are designed to operate in a Last-in-First-Out context (LIFO), where elements are inserted and extracted only from one end of the container.
+
+CREATING A STACK:-
+C++'s built-in `std::stack` lives in the `<stack>` standard library. This preprocessor directive needs to be added to the top of the program.
+`#include <stack>`
+a stack of `int's` called plates can be declared by:
+`std::stack<int> plates;`
+
+STACK METHODS:-
+Adding an element:-
+The `.push()` function inserts a new element at the top of the stack, above its current top element:
+```
+plates.push(10);
+plates.push(30);
+plates.push(5);
+```
+
+Removing an element:-
+`.pop()` removes the topmost element of the stack and returns it. If there are no more items to pop, it throws an exception.
+```
+plates.pop();
+```
+
+ACCESS AN ELEMENT:-
+the `.top()` function returns a reference to the top element in the stack without removing it
+```
+std::cout << plates.top();
+```
+unlike vectors, stack access is limited to the top element and cannot use index access.
+
+SIZE OF A STACK:-
+The `.size()` function returns the number of elements in the stack
+```
+std::stack<int> tower;
+
+tower.push(3);
+tower.push(5);
+tower.push(7);
+
+std::cout << tower.size();
+```
+The `.empty()` function returns a boolean value of whether the stack is empty
+```
+std::cout << tower.empty() //outputs: 0
+
+tower.pop();
+tower.pop();
+tower.pop();
+
+std::cout << tower.empty(); //outputs: 1
+```
+
+** QUEUE
+Queues are designed to operate in a First-In-First-Out context (FIFO), where elements are inserted into one end of the container and expected from the other.
+
+CREATING A QUEUE:-
+C++'s built-in `std::queue` lives in the `<queue>` standard library. This preprocessor directive needs to be added to the top of the program
+```
+#include <queue>
+
+std::queue<std::string> line;
+```
+
+QUEUE METHODS:-
+Adding an Element:-
+The `.push()` function inserts a new element at the end of the queue, after its current last element
+```
+line.push(23);
+line.push(54);
+line.push(76);
+```
+
+Removing an Element:-
+The `.pop()` function removes the oldest element to be inserted into the queue. This operation effectively reduces the size of the queue by one
+`line.pop();`
+
+ACCESS AN ELEMENT:-
+The `.front()` function returns a reference to the front (oldest) element in the queue without removing it
+`std::cout << line.front();`
+The `.back()` function returns a reference to the back (newest) element in the queue without removing it
+`std::cout << line.back();`
+
+SIZE OF THE QUEUE:-
+The `.size()` function returns the number of elements in the queue
+```
+std::queue<int> order;
+
+order.push(10);
+order.push(9);
+order.push(8);
+
+std::cout << order.size();
+```
+The `.empty()` function returns a boolean value of whether the queue is empty
+```
+std::cout << order.empty(); // Outputs: 0
+
+order.pop();
+order.pop();
+order.pop();
+
+std::cout << order.empty();
+```
+
+** SETS
+A set is a data structures that stores multiple unique elements in a single variable. Elements of a set are not accessible by index like vectors. Instead, they are accessible by key values. In a set, the value of each element acts its own key that uniquely identifies it.
+
+CREATING A SET:-
+In order to utilize C++'s built-in set data structure, the appropriate library name needs to be included at the top of the program
+```
+#include <unordered_set>
+#include <set>
+```
+To create an empty set of int's, use the syntax
+`std::unordered_set<int>` or `std::set<int>`
+
+SET METHODS:-
+Adding an Element:-
+The `.insert()` function adds a new element to the set. Since sets cannot contain duplicate elements, an element is inserted only if it is not equivalent to any other element already in the set.
+```
+std::unordered_set<int> primes;
+
+primes.insert(2);
+primes.insert(3);
+primes.insert(3); //Duplicate value is not inserted
+
+//primes contain {2, 3}
+```
+
+Removing an Element:-
+The `.erase()` function removes an element from the set. The argument is the key that identifies the element to be removed.
+```
+std::unordered_set<int> primes;
+
+primes.insert(2);
+primes.insert(3);
+primes.erase(2);
+```
+
+Checking for an Element:-
+The `.count()` function searches in the set and return the number of elements that match the argument value
+```
+std::unordered_set<int> primes({2, 3, 5, 7});
+
+if (primes.count(4)) {
+    std::cout << "4 is a prime";
+}
+else {
+    std::cout << "4 is not a prime";
+}
+```
+
+Size of a Set:-
+The `.size()` function returns the number of elements in the set
+```
+std::unordered_set<char> symbols({'x', 'y', 'z'});
+std::cout << symbols.size();
+```
+The `.empty()` function returns a boolean value of whether the set is empty
+```
+std::cout << symbols.empty();  // Outputs: 0
+
+symbols.erase('x');
+symbols.erase('y');
+symbols.erase('z');
+
+std::cout << symbols.empty();   // Outputs: 1
+```
